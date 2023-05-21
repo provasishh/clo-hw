@@ -50,6 +50,7 @@ Return<uint64_t> BiometricsFingerprint::preEnroll() {
 
 Return<RequestStatus> BiometricsFingerprint::enroll(const hidl_array<uint8_t, 69>& hat,
                                                     uint32_t gid, uint32_t timeoutSec) {
+    setDimlayerHbm(1);
     return mOplusBiometricsFingerprint->enroll(hat, gid, timeoutSec);
 }
 
@@ -105,7 +106,7 @@ Return<void> BiometricsFingerprint::onFingerDown(uint32_t x, uint32_t y, float m
 Return<void> BiometricsFingerprint::onFingerUp() {
     setFpPress(0);
     if (!this->isEnrolling) {
-        setDimlayerHbm(0);
+        setDimlayerHbm(1);
     }
     mPowerService->setMode(Mode::LAUNCH, false);
     return mOplusBiometricsFingerprint->onFingerUp();
@@ -136,7 +137,7 @@ Return<void> BiometricsFingerprint::onError(uint64_t deviceId, FingerprintError 
                                             int32_t vendorCode) {
     setFpPress(0);
     if (!this->isEnrolling) {
-        setDimlayerHbm(0);
+        setDimlayerHbm(1);
     }
     return mClientCallback->onError(deviceId, error, vendorCode);
 }
