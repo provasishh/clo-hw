@@ -41,3 +41,6 @@ vendor.oplus.hardware.radio::IOplusRadio          u:object_r:hal_telephony_hwser
 
 # Vibrator
 vendor.aac.hardware.richtap.vibrator::IRichtapVibrator    u:object_r:hal_vibrator_hwservice:s0
+
+# Dolby
+vendor.dolby.hardware.dms::IDms		           u:object_r:hal_dms_hwservice:s0
