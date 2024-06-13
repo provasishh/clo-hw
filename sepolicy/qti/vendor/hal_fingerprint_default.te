@@ -11,6 +11,8 @@ allow hal_fingerprint_default fwk_osense_aidl_service:service_manager find;
 allow hal_fingerprint_default vendor_hal_orms_hwservice:hwservice_manager find;
 allow hal_fingerprint_default vendor_hal_performance_hwservice:hwservice_manager find;
 
+allow hal_fingerprint_default fingerprint_vendor_data_file:dir create;
+
 allow hal_fingerprint_default fingerprint_device:chr_file rw_file_perms;
 allow hal_fingerprint_default graphics_device:chr_file rw_file_perms;
 allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
